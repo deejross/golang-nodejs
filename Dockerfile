@@ -59,9 +59,11 @@ WORKDIR $GOPATH
 
 COPY go-wrapper /usr/local/bin/
 
+# install dependencies
+RUN apk add --no-cache curl git
+
 # install dep
 RUN go get -u github.com/golang/dep/cmd/dep
 
 # install glide
-RUN apk add --no-cache curl
 RUN curl https://glide.sh/get | sh
