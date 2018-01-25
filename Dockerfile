@@ -58,3 +58,10 @@ RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 WORKDIR $GOPATH
 
 COPY go-wrapper /usr/local/bin/
+
+# install dep
+RUN go get -u github.com/golang/dep/cmd/dep
+
+# install glide
+RUN apk add --no-cache curl
+RUN curl https://glide.sh/get | sh
